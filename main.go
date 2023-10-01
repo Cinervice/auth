@@ -17,7 +17,7 @@ func main() {
 
 	authRouter.HandleFunc("/signin", authservice.SigninHandler).Methods("GET")
 
-	ch := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"http://localhost:3000"}))
+	ch := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"http://localhost:3001"}))
 
 	server := &http.Server{
 		Addr:    "127.0.0.1:9090",
