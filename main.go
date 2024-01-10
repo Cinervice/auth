@@ -15,12 +15,12 @@ func main() {
 	authRouter := mainRouter.PathPrefix("/auth").Subrouter()
 	authRouter.HandleFunc("/signup", authservice.SignupHandler).Methods("POST")
 
-	authRouter.HandleFunc("/signin", authservice.SigninHandler).Methods("GET")
+	authRouter.HandleFunc("/signin", authservice.SigninHandler).Methods("POST")
 
-	ch := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"http://localhost:3001"}))
+	ch := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"http://localhost:8080"}))
 
 	server := &http.Server{
-		Addr:    "127.0.0.1:9090",
+		Addr:    "127.0.0.1:8000",
 		Handler: ch(mainRouter),
 	}
 	err := server.ListenAndServe()
